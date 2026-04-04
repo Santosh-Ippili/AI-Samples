@@ -8,11 +8,11 @@ load_dotenv()
 api_key = os.getenv('GROQ_API_KEY')
 # print(api_key)
 
-client = Groq(
+groqClient = Groq(
     api_key=api_key,
 )
 
-chat_completion = client.chat.completions.create(
+response = groqClient.chat.completions.create(
     messages=[
         {
             "role": "user",
@@ -22,4 +22,4 @@ chat_completion = client.chat.completions.create(
     model="llama-3.3-70b-versatile",
 )
 
-print(chat_completion.choices[0].message.content)
+print(response.choices[0].message.content)
